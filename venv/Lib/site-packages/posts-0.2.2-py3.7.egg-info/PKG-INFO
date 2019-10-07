@@ -1,0 +1,101 @@
+Metadata-Version: 1.0
+Name: posts
+Version: 0.2.2
+Summary: A Python library for send mail easily
+Home-page: https://github.com/importcjj/Post
+Author: Jiaju.Chen
+Author-email: jiaju.chen@ele.me
+License: BSD2
+Description: 
+        Posts
+        ======
+        
+        Posts is a Python library for send mail easily.
+        
+        Installation
+        ------------
+        
+        - ``GitHub:`` https://github.com/importcjj/Posts
+        - ``PyPi`` https://pypi.python.org/pypi/posts
+        
+        .. code:: sh
+        
+        	pip install posts
+        
+        Examples
+        --------
+        
+        Here is the first one to send a mail in **text**:
+        
+        .. code:: python
+        
+        	from posts import Posts
+        
+        	mail = Posts('smtp-server', 'your-username', 'your-passwd')
+        
+        	with mail() as box:
+        		box.text('to_address', subject='Subject', content='Content')
+        
+        
+        Posts does not only support mail in **text** type, but also support **html**:
+        
+        .. code:: python
+        	
+        	box.html('to_address', subject='Subject', content='Content')
+        
+        
+        Next, we can send a mail with **attachments**:
+        
+        .. code:: python
+        
+        	with mail() as box:
+        		box.attach({'example.jpg': './example.jpg})
+        		box.text('to_address', subject='Subject', content='Content')
+        
+        
+        Finally, we can send the Html mail with image. and
+        in the example, we also use a **alias** for the sender:
+        
+        .. code:: python
+        
+        	with mail(alias='alias') as box:
+        		box.attach({
+        				'example.jpg': './example.jpg'})
+        		box.html(
+        			recipient='to_address', 
+        			subject='subject', 
+        			content='<img src="cid:example.jpg">')
+        
+        
+        Maybe you need to send mail by ssl, don't worry:
+        
+        .. code:: python
+        
+        	with mail(ssl=True) as box:
+        		box.text('to_address', subject='Subject', content='Content')
+        
+        Chain Useage
+        ------------
+        
+        Just try like this:
+        
+        .. code:: python
+        
+        	box.attach({'name1': '/path/to/file1',
+        				'name2': '/path/to/file2'}).\
+        		attach({'name3': '/path/to/file3'}).\
+        		text('to_address', 'subject', 'content').\
+        		html(['to_address1', 'to_address2'], 'subject', 'content')
+        	
+        The text mail with attachment 1, 2, 3 will send to address,
+        and then the html mail with attachment 1, 2, 3 will be sent ot
+        address1, address2 together.
+        
+        TODO
+        ----
+        
+        - add **alias** for recipient.
+        - add **carbon copy**.
+        - add usage without **with**.
+        
+Platform: UNKNOWN
