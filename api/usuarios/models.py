@@ -16,20 +16,30 @@ serie = (
     ('8', '8ª Ano'),
     ('9', '9º Ano'),
 )
+
 class Cidade(models.Model):
     cidade = models.CharField(max_length=50)
-    estado = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.cidade
 
 class Escola(models.Model):
     escola = models.CharField(max_length=50)
-    cidade = models.ForeignKey('Cidade', models.DO_NOTHING, blank=True, null=True)
+
+    def __str__(self):
+        return self.escola
 
 class Usuario(models.Model):
+    login = models.CharField(max_length=50)
+    senha = models.CharField(max_length=50)
     nome = models.CharField(max_length=50)
     idade = models.IntegerField()
-    sexo = models.IntegerField(choices=sexo, unique=True)
-    serie = models.CharField(max_length=20, choices=serie, unique=True)
-    cidade = models.ForeignKey('Cidade', models.DO_NOTHING, blank=True, null=True)
-    escola = models.ForeignKey('Escola', models.DO_NOTHING, blank=True, null=True)
+    sexo = models.IntegerField(choices=sexo)
+    serie = models.CharField(max_length=20, choices=serie)
+    cidade = models.ForeignKey(Cidade, models.DO_NOTHING)
+    escola = models.ForeignKey(Escola, models.DO_NOTHING)
     pontuacao = models.DecimalField(decimal_places=2, max_digits=8, default=0)
+
+    def __str__(self):
+        return self.nome
 
