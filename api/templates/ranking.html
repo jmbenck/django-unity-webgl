@@ -1,13 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Ranking</title>
-</head>
-<body>
-    <h1>Bem vindo, {{user.username}}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center">Ranking</h1>
+    <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">Posição</th>
+        <th scope="col">Nome do Jogador</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Escola</th>
+        <th scope="col">Pontuação</th>
+    </tr>
+  </thead>
+        <tbody>
+
     {% for r in ranking %}
-        <p>Nome:{{r.nome}}, Escola:{{r.escola}}, Cidade:{{r.cidade}}, Pontuacao:{{r.pontuacao}}</p>
+            <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{r.nome}}</td>
+            <td>{{r.cidade}}</td>
+            <td>{{r.escola}}</td>
+            <td>{{r.pontuacao}}</td>
     {% endfor %}
-</body>
-</html>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
