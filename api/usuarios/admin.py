@@ -6,6 +6,7 @@ class EscolaAdmin(admin.ModelAdmin):
     ordering = ['escola']
 
 class UsuarioAdmin(admin.ModelAdmin):
+    fields = ('username', 'password', 'nome', 'idade', 'sexo', 'serie', 'cidade', 'escola',)
     autocomplete_fields = ['escola']
     exclude = ['pontuacao']
 

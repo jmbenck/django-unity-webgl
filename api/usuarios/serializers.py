@@ -4,14 +4,14 @@ from .models import Cidade, Escola, Usuario
 class CidadeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Cidade
-        fields = ('id', 'url', 'cidade')
+        fields = ('url', 'id', 'cidade')
 
 class EscolaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Escola
-        fields = ('id', 'url', 'escola')
+        fields = ('url', 'id', 'escola')
 
 class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Usuario
-        fields = ('id', 'url', 'login', 'senha', 'nome', 'idade', 'sexo', 'cidade', 'escola', 'serie', 'pontuacao')
+        fields = ('url', 'id', 'username', 'password', 'nome', 'idade', 'sexo', 'cidade', 'escola', 'serie', 'pontuacao')

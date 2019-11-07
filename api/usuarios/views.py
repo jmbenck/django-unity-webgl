@@ -7,6 +7,7 @@ from rest_framework.filters import (
     OrderingFilter
 )
 
+from api.forms import UsuarioForm
 from .models import Cidade, Escola, Usuario
 from .serializers import UsuarioSerializer, CidadeSerializer, EscolaSerializer
 
@@ -26,3 +27,20 @@ class CidadeView(viewsets.ModelViewSet):
 class EscolaView(viewsets.ModelViewSet):
     queryset = Escola.objects.all()
     serializer_class = EscolaSerializer
+
+def ranking(request, *args, **kwargs):
+    ranking = Usuario.objects.order_by('-pontuacao')
+    context = {"ranking": ranking}
+    return render(request, "ranking.html", context)
+
+def usuario_cadastro(response, *args, **kwargs):
+    form = UsuarioForm()
+    if response.method == "POST":
+        form = UsuarioForm(response.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = UsuarioForm()
+    return render(response, "usuario_cadastro.html", {"form":form})
+
+

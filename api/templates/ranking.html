@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Ranking</title>
+</head>
+<body>
+    <h1>Bem vindo, {{user.username}}</h1>
+    {% for r in ranking %}
+        <p>Nome:{{r.nome}}, Escola:{{r.escola}}, Cidade:{{r.cidade}}, Pontuacao:{{r.pontuacao}}</p>
+    {% endfor %}
+</body>
+</html>

@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.authtoken import views
+from usuarios.views import usuario_cadastro, ranking
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('usuarios.urls'))
+    path('', include('usuarios.urls')),
+    path('autenticar/', views.obtain_auth_token, name='autenticacao-api-token'),
+    path('ranking/', ranking),
+    path('cadastro/', usuario_cadastro)
 ]
