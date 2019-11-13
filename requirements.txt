@@ -1,3 +1,5 @@
 django==2.2.7
+django-suit
 django-crispy-forms
 djangorestframework
+django-filter

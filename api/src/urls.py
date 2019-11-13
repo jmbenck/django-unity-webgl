@@ -1,4 +1,4 @@
-"""api URL Configuration
+"""src URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -14,14 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 from rest_framework.authtoken import views
 from usuarios.views import usuario_cadastro, ranking
 
+from .router import router
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('usuarios.urls')),
-    path('autenticar/', views.obtain_auth_token, name='autenticacao-api-token'),
-    path('ranking/', ranking),
-    path('cadastro/', usuario_cadastro)
+    path('', LoginView.as_view(template_name="login.html"), name="login"),
+    path('login/', LoginView.as_view(template_name="login.html"), name="login"),
+    path('logout', LogoutView.as_view(next_page='login'), name="logout"),
+    path('autenticar/', views.obtain_auth_token, name='autenticacao-src-token'),
+    path('ranking/', ranking, name="ranking"),
+    path('cadastro/', usuario_cadastro, name="cadastro"),
+    path('api/', include(router.urls))
 ]

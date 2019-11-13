@@ -18,17 +18,20 @@ serie = [
     (9, '9º Ano'),
 ]
 
+
 class Cidade(models.Model):
     cidade = models.CharField(max_length=50)
 
     def __str__(self):
         return self.cidade
 
+
 class Escola(models.Model):
     escola = models.CharField(max_length=50)
 
     def __str__(self):
         return self.escola
+
 
 class Usuario(User):
     nome = models.CharField(max_length=50)
@@ -50,4 +53,3 @@ class Usuario(User):
 
     class Meta:
         db_table = 'Usuario'
-

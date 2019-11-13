@@ -2,12 +2,13 @@
 
 {% block content %}
 {% load crispy_forms_tags %}
-<h1 class="mt-2">Cadastro Jogador</h1>
+<h1 class="mt-4">Cadastro Jogador</h1>
 <hr class="mt-0 mb-4">
-  <form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-success mb-5">Salvar</button>
-
-  </form>
+<div class="container col-8">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success mb-5" type="submit">Salvar</button>
+    </form>
+</div>
 {% endblock %}
