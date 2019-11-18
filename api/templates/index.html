@@ -1,62 +1,57 @@
-
 {%load static%}
 <!DOCTYPE html>
 <html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | MinisterioGame</title>
-    <link rel="shortcut icon" href="{% static 'TemplateData/favicon.ico'%}">
-    <link rel="stylesheet" href="{% static 'TemplateData/style.css'%}">
-    <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
-    <script src="{% static 'Build/UnityLoader.js'%}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    
-<h1>Id do usuario: {{user.id}}</h1>
-    <script>
-      var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
-
-      var id = {{user.id }};
+<head>
+  <meta charset="utf-8">
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <title>Unity WebGL Player | MinisterioGame</title>
+  <link href="{% static 'TemplateData/favicon.ico'%}" rel="shortcut icon">
+  <link href="{% static 'TemplateData/style.css'%}" rel="stylesheet">
+  <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
+  <script src="{% static 'Build/UnityLoader.js'%}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 
+  <h1>Id do usuario: {{user.id}}</h1>
+  <script>
+  var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
 
-      window.Unity = {
-      JanelaCarregada() {
-        console.log('Pagina says: carregou janela Unity');
-        
-        gameInstance.SendMessage('Main Camera', 'SendID', id);
-      },
-      SalvaPontucao(pontos) {
-        console.log('Pagina says: salvando pontuacao ' + pontos);
-        var settings = {
-  "url": "http://localhost:8000/api/usuario/2/",
-  "method": "PATCH",
-  "headers": {
-    "Content-Type": "application/json",
-    "Authorization": "Token d1cae7afd24ff4d04074d1c51cf4fda69d6b126d",
-  },
-  "processData": false,
-  "data": "{pontuacao: 666}"
-}
+  var id = {{user.id }};
 
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
+  window.Unity = {
+    JanelaCarregada() {
+      console.log('Pagina says: carregou janela Unity');
+
+      gameInstance.SendMessage('Main Camera', 'SendID', id);
+    },
+    SalvaPontucao(pontos) {
+      console.log('Pagina says: salvando pontuacao ' + pontos);
+      var apiKey = "Token 5ff1b86cbf8a5acee27dbbfe4a427d24433baade";
+      var url = "http://localhost:8000/api/usuario";
+      $.ajax({
+          url: 'http://localhost:8000/api/usuario',
+          contentType: 'application/json',
+          cache: false,
+          method: 'GET',
+          dataType: 'json',
+          headers: { "Authorization": apiKey },
+          success: function(data) {
+              console.log(data);
+          }
+      });
     }
   }
 
-
-    </script>
-  </head>
-  <body>
-    <div class="webgl-content">
-      <div id="gameContainer" style="width: 960px; height: 600px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">MinisterioGame</div>
-      </div>
+  </script>
+</head>
+<body>
+  <div class="webgl-content">
+    <div id="gameContainer" style="width: 960px; height: 600px"></div>
+    <div class="footer">
+      <div class="webgl-logo"></div>
+      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+      <div class="title">MinisterioGame</div>
     </div>
-  </body>
+  </div>
+</body>
 </html>
