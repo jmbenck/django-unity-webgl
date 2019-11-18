@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 from rest_framework.authtoken import views
-from usuarios.views import usuario_cadastro, ranking
+from usuarios.views import usuario_cadastro, ranking, game
 
 from .router import router
 
@@ -29,5 +29,6 @@ urlpatterns = [
     path('autenticar/', views.obtain_auth_token, name='autenticacao-src-token'),
     path('ranking/', ranking, name="ranking"),
     path('cadastro/', usuario_cadastro, name="cadastro"),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('game/', game, name="game")
 ]

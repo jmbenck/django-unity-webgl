@@ -17,6 +17,9 @@ def ranking(request, *args, **kwargs):
     context = {"ranking": ranking}
     return render(request, "ranking.html", context)
 
+def game(request, *args, **kwargs):
+    return render(request, "index.html")
+
 
 def usuario_cadastro(response, *args, **kwargs):
     form = UsuarioForm()
