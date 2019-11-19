@@ -51,6 +51,13 @@
       console.log('Pagina says: salvando pontuacao ' + pontos);
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
 
+     $.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
       $.ajax({
         url: 'http://159.203.79.216:8000/api/usuario/2/',
         contentType: 'application/json',
