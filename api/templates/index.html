@@ -27,7 +27,7 @@
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
-      var data = { "pontuacao": 666 };
+      var data = { pontuacao: 666 };
       $.ajax({
           url: 'http://159.203.79.216:8000/api/usuario/2/',
           contentType: 'application/json',
