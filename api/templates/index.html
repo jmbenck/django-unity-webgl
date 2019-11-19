@@ -11,10 +11,12 @@
   <script src="{% static 'Build/UnityLoader.js'%}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-  
+  {% csrf_token %}
+
   <h1>Id do usuario: {{user.id}}</h1>
   <script>
   var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
+  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
   var id = {{user.id }};
 
   window.Unity = {
@@ -26,18 +28,18 @@
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
-      $.ajax({
+$.ajax({
 
-        url: 'http://159.203.79.216:8000/api/usuario/2/',
-        contentType: 'application/json',
-        cache: false,
-        method: 'PATCH',
-        dataType: 'json',
-        data: {pontuacao: pontos},
-        headers: {  "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE"},
-        success: function(data) {
-          console.log(data);
-        }
+          url: 'http://159.203.79.216:8000/api/usuario/2/',
+          contentType: 'application/json',
+          cache: false,
+          method: 'PATCH',
+          dataType: 'json',
+          data: {pontuacao: pontos},
+
+          success: function(data) {
+              console.log(data);
+          }
       });
     }
   }
