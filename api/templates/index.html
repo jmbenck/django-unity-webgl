@@ -34,7 +34,8 @@
           cache: false,
           method: 'GET',
           dataType: 'json',
-          headers: { "Authorization": apiKey },
+          headers: { "Authorization": apiKey ,
+          "Access-Control-Allow-Methods", "GET, POST, PATCH, PUT, DELETE"},
           success: function(data) {
               console.log(data);
           }
