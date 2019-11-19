@@ -11,10 +11,10 @@
     <script src="{% static 'Build/UnityLoader.js'%}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+   {% csrf_token %}
 
     <h1>Id do usuario: {{user.id}}</h1>
     <script>
-   {% csrf_token %}
   var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
   var id = {{user.id }};
