@@ -15,8 +15,10 @@ class EscolaSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class UsuarioSerializer(serializers.HyperlinkedModelSerializer):
+    cidade = CidadeSerializer()
+    escola = EscolaSerializer()
 
     class Meta:
         model = Usuario
         fields = (
-            'url', 'id', 'username', 'password', 'nome', 'idade', 'sexo', 'serie', 'pontuacao')
+            'url', 'id', 'username', 'password', 'nome', 'idade', 'sexo', 'serie', 'escola', 'cidade', 'pontuacao')
