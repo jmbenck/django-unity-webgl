@@ -32,8 +32,9 @@
           url: 'http://159.203.79.216:8000/api/usuario',
           contentType: 'application/json',
           cache: false,
-          method: 'GET',
+          method: 'PATCH',
           dataType: 'json',
+          data: JSON.stringify(data),
           headers: { "Authorization": apiKey ,
           "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE"},
           success: function(data) {
