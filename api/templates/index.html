@@ -10,6 +10,9 @@
   <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
   <script src="{% static 'Build/UnityLoader.js'%}"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+  </script>
 
   {% csrf_token %}
 
@@ -48,7 +51,6 @@
       console.log('Pagina says: salvando pontuacao ' + pontos);
 
       $.ajax({
-        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
         var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
         url: 'http://159.203.79.216:8000/api/usuario/2/',
         contentType: 'application/json',
