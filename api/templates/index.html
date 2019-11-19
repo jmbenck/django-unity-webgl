@@ -29,11 +29,12 @@
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
       var url = "http://localhost:8000/api/usuario";
       $.ajax({
-          url: 'http://159.203.79.216:8000/api/usuario/',
+          url: 'http://159.203.79.216:8000/api/usuario/2',
           contentType: 'application/json',
           cache: false,
-          method: 'GET',
+          method: 'PATCH',
           dataType: 'json',
+          data: '{pontuacao: 650}'
           headers: { "Authorization": apiKey },
           success: function(data) {
               console.log(data);
