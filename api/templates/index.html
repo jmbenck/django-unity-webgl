@@ -28,17 +28,15 @@
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
-      $.ajax({
+$.ajax({
 
           url: 'http://159.203.79.216:8000/api/usuario/2/',
           contentType: 'application/json',
           cache: false,
           method: 'PATCH',
           dataType: 'json',
-          data: "{'pontuacao': 420)}",
-          headers: { "Authorization": apiKey ,
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE",
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+          data: {pontuacao: pontos},
+          headers: {  "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE"},
           success: function(data) {
               console.log(data);
           }
