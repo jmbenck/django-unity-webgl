@@ -22,15 +22,15 @@
   window.Unity = {
     JanelaCarregada() {
       console.log('Pagina says: carregou janela Unity');
-
+      
       gameInstance.SendMessage('Main Camera', 'SendID', id);
     },
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
-      var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-      var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
-      $.ajax({
 
+      $.ajax({
+        var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+        var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
         url: 'http://159.203.79.216:8000/api/usuario/2/',
         contentType: 'application/json',
         cache: false,
