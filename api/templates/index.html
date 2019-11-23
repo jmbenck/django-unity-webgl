@@ -41,7 +41,7 @@
   function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
+  }
 
   var csrftoken = getCookie('csrftoken');
 
@@ -55,14 +55,14 @@
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
       var apiKey = "20d2b46856379b6d10df9731d259c0ad15119019";
-
-     $.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
         }
-    }
-});
+      });
       $.ajax({
         url: 'http://159.203.79.216:8000/api/usuario/2/',
         contentType: 'application/json',
@@ -70,8 +70,7 @@
         method: 'PATCH',
         dataType: 'json',
         data: "{'pontuacao': 420)}",
-        headers: { "Authorization": apiKey ,
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE",
+        headers: {"Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE",
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
         success: function(data) {
           console.log(data);
