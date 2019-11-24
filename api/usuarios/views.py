@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+from src import settings
 
 SUCCESS = 'success'
 ERROR = 'error'
@@ -18,6 +20,8 @@ def ranking(request, *args, **kwargs):
     return render(request, "ranking.html", context)
 
 def game(request, *args, **kwargs):
+    if not request.user.is_authenticated:
+        return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     return render(request, "index.html")
 
 

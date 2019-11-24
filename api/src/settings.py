@@ -101,6 +101,7 @@ REST_FRAMEWORK = {
 }
 
 LOGIN_REDIRECT_URL = '/game'
+LOGIN_URL = '/login'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
