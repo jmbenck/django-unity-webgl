@@ -16,10 +16,9 @@
 
   {% csrf_token %}
 
-  <h1>Id do usuario: {{user.id}}</h1>
   <script>
   var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
-
+  
   var id = {{user.id }};
 
   function getCookie(name) {
@@ -71,7 +70,7 @@
         dataType: 'json',
         data: pontuacao,
         headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
         success: function(data) {
           console.log(data);
