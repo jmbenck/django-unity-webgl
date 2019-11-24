@@ -54,7 +54,7 @@
 
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
-
+      var pontuacao = '{"pontuacao":'+ pontos + '}'
       $.ajaxSetup({
         beforeSend: function(xhr, settings) {
           if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -68,13 +68,16 @@
         cache: false,
         method: 'PATCH',
         dataType: 'json',
-        data: '{"pontuacao": 666}',
+        data: pontuacao,
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         },
         success: function(data) {
           console.log(data);
         },
+        error: function(data){
+          console.log(data);
+        }
       });
 
     }
