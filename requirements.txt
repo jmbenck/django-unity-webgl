@@ -3,3 +3,4 @@ django-suit
 django-crispy-forms
 djangorestframework
 django-filter
+django-cors-headers
