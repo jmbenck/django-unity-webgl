@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-    <title>Unity WebGL Player | MinisterioGame</title>
+    <title>Ministerio Game</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
     <link href="{% static 'TemplateData/favicon.ico'%}" rel="shortcut icon">
     <link href="{% static 'TemplateData/style.css'%}" rel="stylesheet">
     <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
@@ -12,7 +14,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-
 
     </script>
 
@@ -84,12 +85,18 @@
 
     }
   }
+
+
+
     </script>
 </head>
 <body>
-<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+<div class="container-fluid">
+    <a class="btn btn-danger float-right mt-4" href="{% url 'logout' %}">Logout</a>
+
+</div>
 <div class="webgl-content">
-    <h4>Olá, {{request.user.usuario.nome}}</h4>
+    <h4 class="text-center mb-3">Olá, {{request.user.usuario.nome}}</h4>
     <div id="gameContainer" style="width: 960px; height: 600px"></div>
     <div class="footer">
         <div class="webgl-logo"></div>
