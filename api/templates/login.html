@@ -3,9 +3,6 @@
 {% block content %}
 {% load crispy_forms_tags %}
 <div class="container col-4">
-    {% if user.is_authenticated %}
-    <a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
-    {%else%}
     <h2 class="mt-4">Login</h2>
     <hr class="mb-4">
     <form method="post">
@@ -17,5 +14,4 @@
         </div>
     </form>
 </div>
-{%endif%}
 {% endblock %}

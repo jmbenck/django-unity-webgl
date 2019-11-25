@@ -1,0 +1,108 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Ministerio Game</title>
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="{% static 'TemplateData/favicon.ico'%}" rel="shortcut icon">
+    <link href="{% static 'TemplateData/style.css'%}" rel="stylesheet">
+    <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
+    <script src="{% static 'Build/UnityLoader.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+  var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
+
+    </script>
+
+    {% csrf_token %}
+
+    <script>
+  var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
+  
+  var id = {{user.id }};
+
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+
+  function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+  }
+
+  var csrftoken = getCookie('csrftoken');
+
+  window.Unity = {
+    JanelaCarregada() {
+      console.log('Pagina says: carregou janela Unity');
+
+      gameInstance.SendMessage('Main Camera', 'SendID', id);
+    },
+
+    SalvaPontucao(pontos) {
+      console.log('Pagina says: salvando pontuacao ' + pontos);
+      var pontuacao = '{"pontuacao":' + pontos + "}";
+      var url = 'http://localhost:8000/api/usuario/'+ {{user.id}} + '/';
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
+      $.ajax({
+        url: '/api/usuario/' + {{user.id}} + '/',
+        contentType: 'application/json',
+        cache: false,
+        method: 'PATCH',
+        dataType: 'json',
+        data: pontuacao,
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+        },
+        success: function(data) {
+          console.log(data);
+        },
+        error: function(data){
+          console.log(data);
+        }
+      });
+
+    }
+  }
+
+
+
+    </script>
+</head>
+<body>
+<div class="container-fluid">
+    <a class="btn btn-danger float-right mt-4" href="{% url 'logout' %}">Logout</a>
+
+</div>
+<div class="webgl-content">
+    <h4 class="text-center mb-3">Olá, {{request.user.usuario.nome}}</h4>
+    <div id="gameContainer" style="width: 960px; height: 600px"></div>
+    <div class="footer">
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">MinisterioGame</div>
+    </div>
+</div>
+</body>
+</html>
