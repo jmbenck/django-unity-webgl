@@ -55,7 +55,7 @@
 
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
-      var pontuacao = '{"pontuacao":'+ pontos + '}';
+      var pontuacao = '{"pontuacao":' + pontos + "}";
       var url = 'http://localhost:8000/api/usuario/'+ {{user.id}} + '/';
       $.ajaxSetup({
         beforeSend: function(xhr, settings) {
