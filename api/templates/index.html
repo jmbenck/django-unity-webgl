@@ -2,21 +2,23 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-  <meta charset="utf-8">
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-  <title>Unity WebGL Player | MinisterioGame</title>
-  <link href="{% static 'TemplateData/favicon.ico'%}" rel="shortcut icon">
-  <link href="{% static 'TemplateData/style.css'%}" rel="stylesheet">
-  <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
-  <script src="{% static 'Build/UnityLoader.js'%}"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script type="text/javascript">
+    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>Unity WebGL Player | MinisterioGame</title>
+    <link href="{% static 'TemplateData/favicon.ico'%}" rel="shortcut icon">
+    <link href="{% static 'TemplateData/style.css'%}" rel="stylesheet">
+    <script src="{% static 'TemplateData/UnityProgress.js'%}"></script>
+    <script src="{% static 'Build/UnityLoader.js'%}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
   var csrftoken = jQuery("[name=csrfmiddlewaretoken]").val();
-  </script>
 
-  {% csrf_token %}
 
-  <script>
+    </script>
+
+    {% csrf_token %}
+
+    <script>
   var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'Build/build.json'%}", {onProgress: UnityProgress});
   
   var id = {{user.id }};
@@ -82,19 +84,18 @@
 
     }
   }
-
-
-  </script>
+    </script>
 </head>
 <body>
-  <div class="webgl-content">
+<a class="btn btn-danger" href="{% url 'logout' %}">Logout</a>
+<div class="webgl-content">
     <h4>Olá, {{request.user.usuario.nome}}</h4>
     <div id="gameContainer" style="width: 960px; height: 600px"></div>
     <div class="footer">
-      <div class="webgl-logo"></div>
-      <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-      <div class="title">MinisterioGame</div>
+        <div class="webgl-logo"></div>
+        <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
+        <div class="title">MinisterioGame</div>
     </div>
-  </div>
+</div>
 </body>
 </html>

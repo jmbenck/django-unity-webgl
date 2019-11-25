@@ -23,7 +23,7 @@ from .router import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', LoginView.as_view(template_name="login.html"), name="login"),
+    path('', game),
     path('login/', LoginView.as_view(template_name="login.html"), name="login"),
     path('logout', LogoutView.as_view(next_page='login'), name="logout"),
     path('autenticar/', views.obtain_auth_token, name='autenticacao-src-token'),
