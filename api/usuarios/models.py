@@ -42,12 +42,6 @@ class Usuario(User):
     escola = models.ForeignKey(Escola, models.DO_NOTHING)
     pontuacao = models.DecimalField(decimal_places=2, max_digits=8, default=0)
 
-    def save(self, *args, **kwargs):
-        if self.id == None:
-            self.set_password('@ais2019')
-            self.is_staff = False
-        super().save(*args, **kwargs)
-
     def __str__(self):
         return self.nome
 
