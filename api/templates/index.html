@@ -65,7 +65,7 @@
         }
       });
       $.ajax({
-        url: url,
+        url: '/api/usuario/' + {{user.id}} + '/',
         contentType: 'application/json',
         cache: false,
         method: 'PATCH',
