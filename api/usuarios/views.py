@@ -31,6 +31,8 @@ def usuario_cadastro(response, *args, **kwargs):
         form = UsuarioForm(response.POST)
         if form.is_valid():
             form.save()
+
+            return redirect("/game/")
     else:
         form = UsuarioForm()
     return render(response, "usuario_cadastro.html", {"form": form})
