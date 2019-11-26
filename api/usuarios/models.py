@@ -25,12 +25,18 @@ class Cidade(models.Model):
     def __str__(self):
         return self.cidade
 
+    class Meta:
+        ordering = ['cidade']
+
 
 class Escola(models.Model):
     escola = models.CharField(max_length=50)
 
     def __str__(self):
         return self.escola
+
+    class Meta:
+        ordering = ['escola']
 
 
 class Usuario(User):

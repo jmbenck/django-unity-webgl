@@ -9,6 +9,8 @@ class CidadeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EscolaSerializer(serializers.HyperlinkedModelSerializer):
+    escola_set = serializers.SerializerMethodField()
+
     class Meta:
         model = Escola
         fields = ('url', 'id', 'escola')

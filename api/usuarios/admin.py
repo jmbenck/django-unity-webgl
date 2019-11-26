@@ -1,17 +1,21 @@
 from django.contrib import admin
 from .models import Usuario, Escola, Cidade
 
+
 class EscolaAdmin(admin.ModelAdmin):
     search_fields = ['escola']
     ordering = ['escola']
+
 
 class UsuarioAdmin(admin.ModelAdmin):
     fields = ('username', 'nome', 'idade', 'sexo', 'serie', 'cidade', 'escola',)
     autocomplete_fields = ['escola']
     exclude = ['pontuacao']
 
+
 class CidadeAdmin(admin.ModelAdmin):
     search_fields = ['cidade']
+    ordering = ['cidade']
 
 
 admin.site.register(Escola, EscolaAdmin)
