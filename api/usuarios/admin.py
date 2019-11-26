@@ -10,6 +10,10 @@ class UsuarioAdmin(admin.ModelAdmin):
     autocomplete_fields = ['escola']
     exclude = ['pontuacao']
 
+class CidadeAdmin(admin.ModelAdmin):
+    search_fields = ['cidade']
+
+
 admin.site.register(Escola, EscolaAdmin)
-admin.site.register(Cidade)
+admin.site.register(Cidade, CidadeAdmin)
 admin.site.register(Usuario, UsuarioAdmin)
