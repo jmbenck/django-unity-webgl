@@ -1,4 +1,4 @@
-django==2.2.7
+django==2.2.8
 django-suit
 django-crispy-forms
 djangorestframework
