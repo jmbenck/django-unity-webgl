@@ -1,14 +1,74 @@
-{% extends 'base.html' %}
+{%load static%}
+{% load bootstrap %}
 
-{% block content %}
-{% load crispy_forms_tags %}
-<h1 class="mt-4">Cadastro Jogador</h1>
-<hr class="mt-0 mb-4">
-<div class="container col-8">
-    <form method="post">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-success mb-5" type="submit">Salvar</button>
-    </form>
-</div>
-{% endblock %}
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'TemplateData/stylesheet.css'%}">
+  <!-- AJAX -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Escola Atitude</title>
+  <script>
+  $(document).ready(function(){
+    $('select[name ^= "cidade"]').change(function()
+    {
+      var selecionado =  $(this).children("option:selected").val();
+      console.log(selecionado);
+      //var selcionado == id da cidade selcionada
+      //fazer um get escolas de id cidade
+
+      $.ajax
+      ({
+
+        url: 'http://127.0.0.1:8000/api/escola/?cidade='+selecionado,
+        contentType: 'application/json',
+        method: 'GET',
+        dataType: 'json',
+        success: function(data) {
+          //console.log(data[1].escola)
+          var escolas = []
+          $.each(data, function(i, val){
+            var opt = "<option value='" + val.id + "'>" + val.escola + "</option>"
+            escolas.push(opt)
+          })
+          console.log(escolas)
+          $('select[name ^= "escola"]').html(escolas);
+        }
+      });
+
+    });
+  });
+
+
+  </script>
+</head>
+<body style="background-image: url({% static 'TemplateData/bg.jpg'%});">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        {% load crispy_forms_tags %}
+        <h1 class="mt-4 col text-white text-center display-3" style="font-family: 'fff_tusjbold';">Cadastro Jogador</h1>
+        <hr class="mt-0 mb-4">
+        <div class="container col-8 text-white">
+          <form method="post" class="text-white">
+            {% csrf_token %}
+            {{form | bootstrap}}
+            <button class="btn btn-success mb-5" type="submit">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</body>
+</html>

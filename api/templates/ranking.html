@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="text-center mt-4">Ranking</h1>
-    <table class="table table-striped">
-    <thead class="thead-dark">
-    <tr>
+    <h1 class="mt-4 text-center display-1" style="color:white;font-family: 'fff_tusjbold';">Ranking</h1>
+    <table class="table table-striped mt-4">
+    <thead class="thead-light">
+    <tr class="light">
         <th scope="col">Posição</th>
         <th scope="col">Nome do Jogador</th>
         <th scope="col">Cidade</th>
@@ -15,7 +15,7 @@
         <tbody>
 
     {% for r in ranking %}
-            <tr>
+            <tr style="color:white">
             <th scope="row">{{forloop.counter}}</th>
             <td>{{r.nome}}</td>
             <td>{{r.cidade}}</td>

@@ -1,17 +1,17 @@
 {% extends 'base.html' %}
-
+{%load static%}
 {% block content %}
 {% load crispy_forms_tags %}
-<div class="container col-4">
-    <h2 class="mt-4">Jogo MP</h2>
+<div class="container col-6" >
+    <h1 class="mt-4 text-center display-1" style="font-family: 'fff_tusjbold'; color:white;">Escola Atitude</h1>
     <hr class="mb-1">
-    <p>Faça Login ou Cadastre-se para jogar</p>
-    <form method="post">
+    <p style="color:white">Faça Login ou Cadastre-se para jogar</p>
+    <form method="post" class="text-white">
         {% csrf_token %}
         {{ form | crispy}}
         <div class="mt-3 mb-5 text-center">
-            <button class="btn btn-success" type="submit">Login</button>
-            <a class="btn btn-secondary" href="{% url 'cadastro' %}">Cadastre-se</a><br>
+            <button class="btn btn-success type="submit">Login</button>
+            <a class="btn btn-success" href="{% url 'cadastro' %}">Cadastre-se</a><br>
             <a class="btn btn-primary mt-3" href="{% url 'ranking' %}">Ranking</a>
         </div>
     </form>

@@ -90,18 +90,18 @@
 
     </script>
 </head>
-<body>
-<div class="container-fluid">
-    <a class="btn btn-danger float-right mt-4" href="{% url 'logout' %}">Logout</a>
+<body style="background-image: url({% static 'TemplateData/bg.jpg'%}); background-size: cover;">
 
-</div>
+<a class="btn btn-danger float-right mt-4 mr-3" href="{% url 'logout' %}">Sair</a>
+
 <div class="webgl-content">
-    <h4 class="text-center mb-3">Olá, {{request.user.usuario.nome}}</h4>
+    <div class="text-center mb-3">
+        <h4 style="color:white">Olá, {{request.user.usuario.nome}}</h4>
+    </div>
     <div id="gameContainer" style="width: 960px; height: 600px"></div>
     <div class="footer">
-        <div class="webgl-logo"></div>
         <div class="fullscreen" onclick="gameInstance.SetFullscreen(1)"></div>
-        <div class="title">MinisterioGame</div>
+        <div class="title" style="color:white">Tela Cheia</div>
     </div>
 </div>
 </body>

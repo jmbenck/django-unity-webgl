@@ -1,4 +1,7 @@
+{%load static%}
+
 <!doctype html>
+
 <html lang="pt-br">
   <head>
     <!-- Required meta tags -->
@@ -6,9 +9,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Jogo MP</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'TemplateData/stylesheet.css'%}">
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Escola Atitude</title>
   </head>
-  <body>
+  <body style="background-image: url({% static 'TemplateData/bg.jpg'%});">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12">

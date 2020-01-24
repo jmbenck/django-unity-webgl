@@ -9,11 +9,11 @@ class CidadeSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class EscolaSerializer(serializers.HyperlinkedModelSerializer):
-    escola_set = serializers.SerializerMethodField()
+    cidade = CidadeSerializer()
 
     class Meta:
         model = Escola
-        fields = ('url', 'id', 'escola')
+        fields = ('url', 'id', 'escola', 'cidade')
 
 
 class UsuarioSerializer(serializers.HyperlinkedModelSerializer):

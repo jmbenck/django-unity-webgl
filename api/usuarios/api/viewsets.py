@@ -26,6 +26,9 @@ class CidadeView(viewsets.ModelViewSet):
     serializer_class = CidadeSerializer
 
 
+
+
 class EscolaView(viewsets.ModelViewSet):
     queryset = Escola.objects.all()
     serializer_class = EscolaSerializer
+    filter_fields = ('cidade',)
