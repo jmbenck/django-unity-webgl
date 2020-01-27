@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['159.203.79.216', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,10 +40,28 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_filters',
     'usuarios',
-    'suit',
     'corsheaders',
     'bootstrapform',
 ]
+
+SUIT_CONFIG = {
+    'ADMIN_NAME': 'Escola Atitude',
+    'HEADER_DATE_FORMAT': 'l, j F Y',
+
+    'MENU': (
+        'sites',
+        {'label': 'Administradores', 'icon': 'icon-user',
+         'models': ('auth.user',)},
+
+        {'label': 'Usuários', 'icon': 'icon-user',
+         'models': ('usuarios.usuario', 'usuarios.convidado')},
+
+        {'label': 'Cidades e Escolas', 'icon': 'icon-list',
+         'models': ('usuarios.cidade', 'usuarios.escola')},
+
+    )
+
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -103,8 +122,12 @@ LOGIN_URL = '/login'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mp',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 

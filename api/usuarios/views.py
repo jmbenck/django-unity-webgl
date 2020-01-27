@@ -10,7 +10,7 @@ CREATE_SUCCESS = 'created'
 
 
 
-from usuarios.forms import UsuarioForm
+from usuarios.forms import UsuarioForm, ConvidadoForm
 from .models import Cidade, Escola, Usuario
 
 
@@ -36,3 +36,15 @@ def usuario_cadastro(response, *args, **kwargs):
     else:
         form = UsuarioForm()
     return render(response, "usuario_cadastro.html", {"form": form})
+
+def convidado_cadastro(response, *args, **kwargs):
+    form_convidado = ConvidadoForm()
+    if response.method == "POST":
+        form_convidado = ConvidadoForm(response.POST)
+        if form_convidado.is_valid():
+            form_convidado.save()
+
+            return redirect("/game/")
+    else:
+        form = UsuarioForm()
+    return render(response, "convidado_cadastro.html", {"form_convidado": form_convidado})

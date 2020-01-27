@@ -15,35 +15,35 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Escola Atitude</title>
   <script>
-  $(document).ready(function(){
-    $('select[name ^= "cidade"]').change(function()
-    {
-      var selecionado =  $(this).children("option:selected").val();
-      console.log(selecionado);
-      //var selcionado == id da cidade selcionada
-      //fazer um get escolas de id cidade
+<!--  $(document).ready(function(){-->
+<!--    $('select[name ^= "cidade"]').change(function()-->
+<!--    {-->
+<!--      var selecionado =  $(this).children("option:selected").val();-->
+<!--      console.log(selecionado);-->
+<!--      //var selcionado == id da cidade selcionada-->
+<!--      //fazer um get escolas de id cidade-->
 
-      $.ajax
-      ({
+<!--      $.ajax-->
+<!--      ({-->
 
-        url: 'http://127.0.0.1:8000/api/escola/?cidade='+selecionado,
-        contentType: 'application/json',
-        method: 'GET',
-        dataType: 'json',
-        success: function(data) {
-          //console.log(data[1].escola)
-          var escolas = []
-          $.each(data, function(i, val){
-            var opt = "<option value='" + val.id + "'>" + val.escola + "</option>"
-            escolas.push(opt)
-          })
-          console.log(escolas)
-          $('select[name ^= "escola"]').html(escolas);
-        }
-      });
+<!--        url: 'http://127.0.0.1:8000/api/escola/?cidade='+selecionado,-->
+<!--        contentType: 'application/json',-->
+<!--        method: 'GET',-->
+<!--        dataType: 'json',-->
+<!--        success: function(data) {-->
+<!--          //console.log(data[1].escola)-->
+<!--          var escolas = []-->
+<!--          $.each(data, function(i, val){-->
+<!--            var opt = "<option value='" + val.id + "'>" + val.escola + "</option>"-->
+<!--            escolas.push(opt)-->
+<!--          })-->
+<!--          console.log(escolas)-->
+<!--          $('select[name ^= "escola"]').html(escolas);-->
+<!--        }-->
+<!--      });-->
 
-    });
-  });
+<!--    });-->
+<!--  });-->
 
 
   </script>
@@ -53,12 +53,13 @@
   <div class="row justify-content-center">
     <div class="col-12">
       {% load crispy_forms_tags %}
-      <h1 class="mt-4 col text-white text-center display-3" style="font-family: 'fff_tusjbold';">Cadastro Jogador</h1>
+      <h1 class="mt-4 col text-white text-center display-3" style="font-family: 'fff_tusjbold';">Cadastro Convidado</h1>
+      <p class="text-center text-white">Preencha os dados para jogar</p>
       <hr class="mt-0 mb-4">
       <div class="container col-8 text-white">
         <form method="post" class="text-white">
           {% csrf_token %}
-          {{form | bootstrap}}
+          {{form_convidado | bootstrap}}
           <button class="btn btn-success mb-5" type="submit">Salvar</button>
         </form>
       </div>

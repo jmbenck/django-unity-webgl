@@ -96,7 +96,12 @@
 
 <div class="webgl-content">
     <div class="text-center mb-3">
+        {% if not request.user.usuario.nome%}
+        <h4 style="color:white">Olá, {{request.user.convidado.nome}}</h4>
+        {%else%}
         <h4 style="color:white">Olá, {{request.user.usuario.nome}}</h4>
+        {%endif%}
+
     </div>
     <div id="gameContainer" style="width: 960px; height: 600px"></div>
     <div class="footer">

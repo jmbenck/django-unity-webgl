@@ -4,3 +4,5 @@ django-crispy-forms
 djangorestframework
 django-filter
 django-cors-headers
+mysqlclient
+django-bootstrap-form
