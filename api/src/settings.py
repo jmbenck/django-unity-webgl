@@ -53,8 +53,11 @@ SUIT_CONFIG = {
         {'label': 'Administradores', 'icon': 'icon-user',
          'models': ('auth.user',)},
 
-        {'label': 'Usuários', 'icon': 'icon-user',
-         'models': ('usuarios.usuario', 'usuarios.convidado')},
+        {'label': 'Jogadores', 'icon': 'icon-user',
+         'models': ('usuarios.usuario',)},
+
+        {'label': 'Convidados', 'icon': 'icon-user',
+         'models': ('usuarios.convidado',)},
 
         {'label': 'Cidades e Escolas', 'icon': 'icon-list',
          'models': ('usuarios.cidade', 'usuarios.escola')},
