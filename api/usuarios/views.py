@@ -19,6 +19,11 @@ def ranking(request, *args, **kwargs):
     context = {"ranking": ranking}
     return render(request, "ranking.html", context)
 
+def final(request, *args, **kwargs):
+    ranking = Usuario.objects.order_by('-pontuacao')
+    context = {"ranking": ranking}
+    return render(request, "final.html", context)
+
 def game(request, *args, **kwargs):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))

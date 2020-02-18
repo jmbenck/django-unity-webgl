@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, include
 from rest_framework.authtoken import views
-from usuarios.views import usuario_cadastro, ranking, game, convidado_cadastro
+from usuarios.views import usuario_cadastro, ranking, game, convidado_cadastro, final
 
 from .router import router
 
@@ -31,5 +31,6 @@ urlpatterns = [
     path('cadastro/', usuario_cadastro, name="cadastro"),
     path('convidado/', convidado_cadastro, name="convidado"),
     path('api/', include(router.urls)),
-    path('game/', game, name="game")
+    path('game/', game, name="game"),
+    path('final/', final, name="final")
 ]
