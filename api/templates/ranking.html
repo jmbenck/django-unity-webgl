@@ -4,76 +4,109 @@
 
 <html lang="pt-br">
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="{% static 'TemplateData/stylesheet.css'%}">
-  <!-- AJAX -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <title>Escola Atitude</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Bootstrap CSS -->
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <link href="{% static 'TemplateData/stylesheet.css'%}" rel="stylesheet" type="text/css">
+    <!-- AJAX -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>Escola Atitude</title>
 </head>
 <body style="background-image: url({% static 'TemplateData/bg.jpg'%});">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="/game">Escola Atitude</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link" href="/game">Jogo</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="/ranking">Ranking</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/cadastro">Cadastro</a>
-      </li>
-    </ul>
-  </div>
+    <button aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarTogglerDemo01" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="/game">Escola Atitude</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/game">Jogo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/ranking">Ranking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cadastro">Cadastro</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input aria-label="Search" class="form-control mr-sm-2" id="myInput" onkeyup="myFunction()"
+                   placeholder="Buscar pelo nome" type="search">
+        </form>
+    </div>
 </nav>
 <div class="container">
-  <div class="row justify-content-center">
-    <div class="col-12">
+    <div class="row justify-content-center">
+        <div class="col-12">
 
-  </div>
+        </div>
+    </div>
+
+    <h1 class="mt-4 text-center display-1" style="color:white;font-family: 'fff_tusjbold';">Ranking</h1>
+    <table class="table table-striped mt-4">
+        <thead class="thead-light">
+        <tr class="light">
+            <th scope="col">Posição</th>
+            <th scope="col">Nome do Jogador</th>
+            <th scope="col">Cidade</th>
+            <th scope="col">Escola</th>
+            <th scope="col">Pontuação</th>
+        </tr>
+        </thead>
+        <tbody id="usrs">
+
+        {% for r in ranking %}
+        {% if r.nome == request.user.usuario.nome%}
+        <h2 class="text-center text-white">Você fez {{r.pontuacao}} pontos e está na {{forloop.counter}}º posição do
+            Ranking!</h2>
+        <tr class="bg-secondary" style="color:white">
+            {%else%}
+        <tr style="color:white">
+            {%endif%}
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{r.nome}}</td>
+            <td>{{r.cidade}}</td>
+            <td>{{r.escola}}</td>
+            <td>{{r.pontuacao}}</td>
+            {% endfor %}
+        </tr>
+        </tbody>
+</table>
 </div>
 
-<h1 class="mt-4 text-center display-1" style="color:white;font-family: 'fff_tusjbold';">Ranking</h1>
-<table class="table table-striped mt-4">
-    <thead class="thead-light">
-    <tr class="light">
-        <th scope="col">Posição</th>
-        <th scope="col">Nome do Jogador</th>
-        <th scope="col">Cidade</th>
-        <th scope="col">Escola</th>
-        <th scope="col">Pontuação</th>
-    </tr>
-    </thead>
-    <tbody>
-
-    {% for r in ranking %}
-    {% if r.nome == request.user.usuario.nome%}
-    <h2 class="text-center text-white">Você fez {{r.pontuacao}} pontos e está na {{forloop.counter}}º posição do Ranking!</h2>
-    <tr style="color:white" class="bg-secondary">
-        {%else%}
-         <tr style="color:white">
-        {%endif%}
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{r.nome}}</td>
-        <td>{{r.cidade}}</td>
-        <td>{{r.escola}}</td>
-        <td>{{r.pontuacao}}</td>
-        {% endfor %}
-    </tr>
-    </tbody>
-    </div>
-</table>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+function myFunction() {
+    var input, filter, table, row, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("usrs");
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+        a = row[i].getElementsByTagName("td")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            row[i].style.display = "";
+        } else {
+            row[i].style.display = "none";
+        }
+    }
+}
+</script>
+</script>
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </body>
 </html>

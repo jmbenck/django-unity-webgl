@@ -32,6 +32,10 @@
         <a class="nav-link" href="/cadastro">Cadastro</a>
       </li>
     </ul>
+       <form class="form-inline my-2 my-lg-0">
+            <input aria-label="Search" class="form-control mr-sm-2" id="myInput" onkeyup="myFunction()"
+                   placeholder="Buscar pelo nome" type="search">
+        </form>
   </div>
 </nav>
 <div class="container">
@@ -48,7 +52,7 @@
         <th scope="col">Pontuação</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="usrs">
 
     {% for r in ranking %}
     {% if r.nome == request.user.usuario.nome%}
@@ -69,6 +73,24 @@
     </div>
   </div>
 </div>
+<script>
+function myFunction() {
+    var input, filter, table, row, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("usrs");
+    row = table.getElementsByTagName("tr");
+    for (i = 0; i < row.length; i++) {
+        a = row[i].getElementsByTagName("td")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            row[i].style.display = "";
+        } else {
+            row[i].style.display = "none";
+        }
+    }
+}
+</script>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
