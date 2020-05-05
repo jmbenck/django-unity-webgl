@@ -50,7 +50,7 @@ SUIT_CONFIG = {
 
     'MENU': (
         'sites',
-        {'label': 'Administradores', 'icon': 'icon-user',
+        {'label': 'Administrador', 'icon': 'icon-user',
          'models': ('auth.user',)},
 
         {'label': 'Jogadores', 'icon': 'icon-user',
