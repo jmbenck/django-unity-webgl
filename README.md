@@ -1,7 +1,8 @@
 # Unity WebGL integration with Python Django
 
-## this project consist in a Unity game for WebGL that uses an API made with Django and Restframework for:
-- Admin Dashboard 
-- User Registration
+## This project consist in a Unity game (WebGL) that uses an API made with Python using, mainly, the frameworks: Django and Restframework.
+### Those are the main functionality of the integration:
+- Admin Dashboard
 - User Authentication
-- User Score
+- Player Registration
+- Player Score
