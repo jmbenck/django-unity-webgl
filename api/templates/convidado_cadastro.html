@@ -11,42 +11,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="{% static 'TemplateData/stylesheet.css'%}">
-  <!-- AJAX -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <title>Escola Atitude</title>
-  <script>
-<!--  $(document).ready(function(){-->
-<!--    $('select[name ^= "cidade"]').change(function()-->
-<!--    {-->
-<!--      var selecionado =  $(this).children("option:selected").val();-->
-<!--      console.log(selecionado);-->
-<!--      //var selcionado == id da cidade selcionada-->
-<!--      //fazer um get escolas de id cidade-->
-
-<!--      $.ajax-->
-<!--      ({-->
-
-<!--        url: 'http://165.227.191.252:8000/api/escola/?cidade='+selecionado,-->
-<!--        contentType: 'application/json',-->
-<!--        method: 'GET',-->
-<!--        dataType: 'json',-->
-<!--        success: function(data) {-->
-<!--          //console.log(data[1].escola)-->
-<!--          var escolas = []-->
-<!--          $.each(data, function(i, val){-->
-<!--            var opt = "<option value='" + val.id + "'>" + val.escola + "</option>"-->
-<!--            escolas.push(opt)-->
-<!--          })-->
-<!--          console.log(escolas)-->
-<!--          $('select[name ^= "escola"]').html(escolas);-->
-<!--        }-->
-<!--      });-->
-
-<!--    });-->
-<!--  });-->
-
-
-  </script>
 </head>
 <body style="background-image: url({% static 'TemplateData/bg.jpg'%});">
 <div class="container">
