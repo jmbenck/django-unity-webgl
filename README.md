@@ -40,8 +40,7 @@
 
 #### To get the user data we can use the API built with Django-Rest-Framework. The API configuration is in the folder api of the app "usuarios" in the Django project.
 
-#### To avoid refreshing the page when sending data we can use the Jquery function called 'salvaPontuacao' that recieves as an argument the score of the user.
-#### Note: This function needs to be inside the object **window.Unity** from index.html to be used later from Unity.
+#### To avoid refreshing the page when sending data we can use the Jquery function called 'salvaPontuacao' that recieves as an argument the score of the user:
 ````javascript
     SalvaPontucao(pontos) {
       console.log('Pagina says: salvando pontuacao ' + pontos);
@@ -75,6 +74,8 @@
     }
   }
 ````
+#### Note: This function needs to be inside the object **window.Unity** from index.html to be used later from Unity.
+
 ----------Part of the Unity code acessing the jquery----------
 
 #### See the communication running in action. The Unity calls the function "salvaPontuacao" and the jQuery code uses the Rest API to modify the score of the user. See the console output:
