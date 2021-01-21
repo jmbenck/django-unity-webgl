@@ -22,7 +22,7 @@
 
 ### Django:
 
-#### The main point in Django is to control users access, identify them, to get access to their score and persist this data in a database.
+#### The main point in Django is to control users access, identify them, and get access to their score and persist this data in a database.
 
 #### First of all, a Django Project was created and the Unity WebGL content imported in the static folder of the Django project. The source files of the game exported from the Unity is in the static folder but the index page that call the Unity WebGL container is in the templates django folder, since we want to access that page dynamically.
 
@@ -30,7 +30,7 @@
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaLogin.png)
 > Authentication page.
 
-#### New Users can sign up within a form. This way the data will persist in a database and the user will now can be identified.
+#### New Users can sign up within a form. This way the data will persist in a database and the user now can be identified.
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaCadastro.png)
 > Authentication page.
 
@@ -38,9 +38,9 @@
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaJogoInicial.png)
 > User authenticated and game loaded.
 
-#### To get the user data we can use the API builded with Django-Rest-Framework. The API configuration is in the app called "api" in the Django project.
+#### To get the user data we can use the API built with Django-Rest-Framework. The API configuration is in the app called "api" in the Django project.
 
-#### Since we don't want the page to refresh when sending a data, to be able to send user score even during the game lets use Jquery. There is a function called 'salvaPontuacao' that recives as argument the score of the user.
+#### To avoid refreshing the page when sending data we can use the Jquery function called 'salvaPontuacao' that recieves as an argument the score of the user.
 #### Note: This function needs to be inside the object **window.Unity** from index.html to be used later from Unity.
 ````javascript
     SalvaPontucao(pontos) {
