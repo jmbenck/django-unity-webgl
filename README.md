@@ -38,7 +38,7 @@
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaJogoInicial.png)
 > User authenticated and game loaded.
 
-#### To get the user data we can use the API built with Django-Rest-Framework. The API configuration is in the app called "api" in the Django project.
+#### To get the user data we can use the API built with Django-Rest-Framework. The API configuration is in the folder api of the app "usuarios" in the Django project.
 
 #### To avoid refreshing the page when sending data we can use the Jquery function called 'salvaPontuacao' that recieves as an argument the score of the user.
 #### Note: This function needs to be inside the object **window.Unity** from index.html to be used later from Unity.
