@@ -1,7 +1,7 @@
 # Unity WebGL integration with Python Django REST API
 This project consists in a Rest API made with Django and Rest framework that communicate with an Unity WebGL application (in this example, a game).
 ### Unity:
-#### Lets start by understanding the Unity WebGL structure.
+Lets start by understanding the Unity WebGL structure.
 
 This is what a WebGL build, straight from Unity should look like:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/UnityWebGLExport.png)
@@ -22,7 +22,7 @@ Now we'll prepare this WebGL application to have user access control, to receive
 
 ### Django:
 
-#### The main point in Django is to control users access, identify them, and get access to their score and persist this data in a database.
+The main point in Django is to control users access, identify them, and get access to their score and persist this data in a database.
 
 First of all, a Django Project was created and the Unity WebGL content imported in the static folder of the Django project. The source files of the game exported from the Unity is in the static folder but the index page that call the Unity WebGL container is in the templates django folder, since we want to access that page dynamically.
 
@@ -85,6 +85,8 @@ See the communication running in action. The Unity calls the function "salvaPont
 Once data is persisted in a database we can access that from other pages. Just like a Ranking page listing all the users and their score:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaRanking.png)
 > Ranking page.
+
+###Admin Interface:
 
 Of course, we can manipulate all that stored data. That is where Django Admin comes on. It is a powerful part of Django to manage data and make operations like Create, Read, Update and Delete in such a easy way:
 
