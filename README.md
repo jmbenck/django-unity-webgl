@@ -88,7 +88,7 @@ Once data is persisted in a database we can access that from other pages. Just l
 
 ### Admin Interface:
 
-Of course, we can manipulate all that stored data. That is where Django Admin comes on. It is a powerful part of Django to manage data and make operations like Create, Read, Update and Delete in such a easy way:
+Of course, we can manipulate all that stored data and create new one. That is where Django Admin comes on. It is a powerful part of Django to manage data and make operations like Create, Read, Update and Delete in such a easy way:
 
 Once you created an admin user, just access "/admin" url:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/AdmHome.png)
