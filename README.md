@@ -74,7 +74,7 @@ To avoid refreshing the page when sending data we can use the Jquery function ca
     }
   }
 ````
-#### Note: This function needs to be inside the object **window.Unity** from index.html to be used later from Unity.
+**Note: This function needs to be inside the object window.Unity from index.html to be used later from Unity.**
 
 ----------Part of the Unity code acessing the jquery----------
 
@@ -86,7 +86,7 @@ Once data is persisted in a database we can access that from other pages. Just l
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaRanking.png)
 > Ranking page.
 
-###Admin Interface:
+### Admin Interface:
 
 Of course, we can manipulate all that stored data. That is where Django Admin comes on. It is a powerful part of Django to manage data and make operations like Create, Read, Update and Delete in such a easy way:
 
