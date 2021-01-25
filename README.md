@@ -3,7 +3,7 @@ This project consists in a Rest API made with Django and Rest framework that com
 ## Unity:
 Lets start by understanding the Unity WebGL structure.
 
-This is what a WebGL build, straight from Unity should look like:
+This is what a WebGL build straight from Unity should look like:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/UnityWebGLExport.png)
 > WebGL project builded from Unity.
 
