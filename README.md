@@ -104,5 +104,5 @@ After authentication we are now able to manage the data:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/AdmJogadoresExport.png)
 > Admin Interfcae - Managing the Jogador(User) records. Note: you can export selected data do CSV.
 
-## Contributing
+## Contribute
 That's all. Feel free to use this code or collaborate to this repo. Thank you.
