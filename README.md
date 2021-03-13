@@ -1,6 +1,6 @@
-# Unity WebGL integration with Python Django REST API
+## Unity WebGL integration with Python Django REST API
 This project consists in a Rest API made with Django and Rest framework that communicate with an Unity WebGL application (in this example, a game).
-## Unity:
+## Unity
 Lets start by understanding the Unity WebGL structure.
 
 This is what a WebGL build straight from Unity should look like:
@@ -20,7 +20,7 @@ Opening the index.html will load Unity WebGL Player and then the game:
 
 Now we'll prepare this WebGL application to have user access control, to receive and send data from an external source, through an API.
 
-## Django:
+## Django
 
 The main point in Django is to control users access, identify them, and get access to their score and persist this data in a database.
 
@@ -76,8 +76,6 @@ To avoid refreshing the page when sending data we can use the Jquery function ca
 ````
 **Note: This function needs to be inside the object window.Unity from index.html to be used later from Unity.**
 
-----------Part of the Unity code acessing the jquery----------
-
 See the communication running in action. The Unity calls the function "salvaPontuacao" and the jQuery code uses the Rest API to modify the score of the user. See the console output:
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/ApiComunication.png)
 > Demonstration of the communication between Unity and a Django.
@@ -86,7 +84,7 @@ Once data is persisted in a database we can access that from other pages. Just l
 ![](https://github.com/jmbenck/Django-UnityWebGL/blob/master/demonstration/TelaRanking.png)
 > Ranking page.
 
-## Admin Interface:
+## Admin Interface
 
 Of course, we can manipulate all that stored data and create new one. That is where Django Admin comes on. It is a powerful part of Django to manage data and make operations like Create, Read, Update and Delete in such a easy way:
 
@@ -105,4 +103,4 @@ After authentication we are now able to manage the data:
 > Admin Interfcae - Managing the Jogador(User) records. Note: you can export selected data do CSV.
 
 ## Contribute
-That's all. Feel free to use this code or collaborate to this repo. Thank you.
+That's all. Feel free for collaborating to this repo. Thank you.
