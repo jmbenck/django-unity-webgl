@@ -30,7 +30,7 @@ urlpatterns = [
     path('ranking/', ranking, name="ranking"),
     path('cadastro/', usuario_cadastro, name="cadastro"),
     path('convidado/', convidado_cadastro, name="convidado"),
-    path('api/', include(router.urls)),
+    path('django-project/', include(router.urls)),
     path('game/', game, name="game"),
     path('final/', final, name="final")
 ]
