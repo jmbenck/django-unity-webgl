@@ -1,4 +1,4 @@
-## Unity WebGL integration with Python Django REST API
+# Unity WebGL integration with Python Django REST API
 This project consists in a Rest API made with Django and Rest framework that communicate with an Unity WebGL application (in this example, a game).
 ## Unity
 Lets start by understanding the Unity WebGL structure.
