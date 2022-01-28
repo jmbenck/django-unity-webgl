@@ -1,4 +1,4 @@
-django==3.1.12
+django==3.1.13
 https://github.com/darklow/django-suit/tarball/v2
 django-crispy-forms
 djangorestframework
